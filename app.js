@@ -46,8 +46,9 @@ app.use(router.routes());
 
 //开发环境
 var webpackServer = require('./config/webpackServer');
+var server = app.listen(config.port, function(){
+  console.log('server listened on port :' + config.port);
+});
 if(process.env.NODE_ENV == 'development'){
-  webpackServer(app);
-}else{
-  app.listen(config.port || 3000);
-};
+  webpackServer(server);
+}

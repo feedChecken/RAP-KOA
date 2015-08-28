@@ -5,7 +5,7 @@ var path = require('path');
 var pkg = require(path.join(process.cwd(), 'package.json'));
 module.exports = {
   output: {
-    path: path.join(process.cwd(), './public/'),
+    path:  path.join(__dirname, '../public/'),
     filename: '[name].js',
     chunkFilename: '[name].js'
   },
@@ -21,7 +21,11 @@ module.exports = {
     root: path.join(__dirname, '../node_modules')
   },
 
-  entry: pkg.entry,
+  entry: {
+    Index : {
+      path : path.join(__dirname, '../src')
+    }
+  },
 
   module: {
     loaders: [{
@@ -67,10 +71,11 @@ module.exports = {
       allChunks: true
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.IgnorePlugin(/^xhr2$/)
+    new webpack.IgnorePlugin(/^xhr2$/),
+    new webpack.HotModuleReplacementPlugin()
+
   ],
   externals: {
     jquery: 'window.jQuery',
-    react: 'window.React'
   }
 };

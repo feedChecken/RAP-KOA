@@ -19,5 +19,4 @@ var App = React.createClass({
     </div>;
   }
 });
-
 React.render(<App />, document.querySelector("#abc"));

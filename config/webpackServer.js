@@ -3,7 +3,8 @@ var webpack = require('webpack');
 var socketio = require('socket.io');
 var serverConfig = require('./serverConfig');
 var http = require('http');
-module.exports = function(app) {
+console.log(webpackConfig);
+module.exports = function(server) {
   var args = {};
   args.hot = true;
   var io;
@@ -22,10 +23,6 @@ module.exports = function(app) {
         loader.loaders.unshift('react-hot');
       }
     });
-    webpackConfig.plugins.push(
-      new webpack.HotModuleReplacementPlugin()
-    );
-    delete webpackConfig.externals.react;
   }
   var compiler = webpack(webpackConfig);
   compiler.plugin('done', function(stats) {
@@ -40,7 +37,6 @@ module.exports = function(app) {
   };
   compiler.plugin("compile", invalidPlugin);
   compiler.plugin("invalid", invalidPlugin)
-  var server = app.listen(serverConfig.port || 3000);
   if (args.hot) {
     io = socketio.listen(server, {
       "log level": 1
@@ -49,7 +45,7 @@ module.exports = function(app) {
       socket.emit("hot");
       if (!_stats) return;
       _sendStats(socket, _stats.toJson(), true);
-    }.bind(this));
+    }.bind(null));
   }
 }
 
