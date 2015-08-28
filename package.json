@@ -4,8 +4,7 @@
   "description": "rap",
   "main": "app.js",
   "scripts": {
-    "test": "test",
-    "dev": "node webpackServer"
+    "dev" : "node app.js"
   },
   "keywords": [
     "rap",

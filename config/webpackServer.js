@@ -2,7 +2,8 @@ var webpackConfig = require('./webpack.config');
 var webpack = require('webpack');
 var socketio = require('socket.io');
 var serverConfig = require('./serverConfig');
-module.exports = function*(server) {
+var http = require('http');
+module.exports = function(app) {
   var args = {};
   args.hot = true;
   var io;
@@ -12,7 +13,7 @@ module.exports = function*(server) {
     for (var k in entry) {
       entry[k] = [].concat(entry[k], [
         'webpack/hot/only-dev-server',
-        'webpack-dev-server/client?http://localhost:'+serverConfig.port
+        'webpack-dev-server/client?http://' + serverConfig.host + ':' + serverConfig.port
       ]);
     }
     var loaders = webpackConfig.module.loaders;
@@ -39,6 +40,7 @@ module.exports = function*(server) {
   };
   compiler.plugin("compile", invalidPlugin);
   compiler.plugin("invalid", invalidPlugin)
+  var server = app.listen(serverConfig.port || 3000);
   if (args.hot) {
     io = socketio.listen(server, {
       "log level": 1

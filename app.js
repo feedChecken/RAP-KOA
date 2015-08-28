@@ -43,12 +43,11 @@ app.use(router.routes());
 //use session
 // app.use(session(app));
 
-//引入路由规则
-
-app.listen(config.port || 3000);
 
 //开发环境
 var webpackServer = require('./config/webpackServer');
 if(process.env.NODE_ENV == 'development'){
   webpackServer(app);
+}else{
+  app.listen(config.port || 3000);
 };
