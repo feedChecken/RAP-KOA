@@ -14,15 +14,19 @@ var bodyParser = require('koa-body-parser');
 var session = require('koa-session');
 //引入querystring Parse
 var queryString = require('qs');
+
+
+var app = koa();
+
 //===============引入自定义模块===============
 //引入路由管理
-var route = require('./router/route');
-//================引入配置文件================
-//include config
-var config = require('./config/serverConfig');
-//generate application
-var app = koa();
 var router = require('./router/route');
+
+//================引入配置文件================
+var config = require('./config/serverConfig');
+
+//include config
+//generate application
 app.use(logger());
 //parse static file
 app.use(serve(__dirname + '/public'));
@@ -42,3 +46,9 @@ app.use(router.routes());
 //引入路由规则
 
 app.listen(config.port || 3000);
+
+//开发环境
+var webpackServer = require('./config/webpackServer');
+if(process.argv[2] == 'dev'){
+  webpackServer(app);
+};

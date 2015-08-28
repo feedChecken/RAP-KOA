@@ -1,8 +1,8 @@
-doctype html5
-html
-  head
-    title KOA RAP
-  body
-    div
-    | 测试内容
-  
+extends ./layout
+block header
+  title 首页
+  include ./modules/head
+block content
+  include ./modules/header
+  div#abc 我是内容
+  script(src='/main.js')

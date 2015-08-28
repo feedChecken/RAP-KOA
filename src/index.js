@@ -1,8 +1,5 @@
-var style = require('./style.css');
 import React from 'react';
-import { Datepicker, message } from 'antd';
-var com = require('./js/content.js');
-
+import { Datepicker,message } from 'antd';
 var App = React.createClass({
   getInitialState() {
     return {
@@ -10,19 +7,17 @@ var App = React.createClass({
     };
   },
   handleChange(value) {
+    message.info('您选择的日期是: ' + value.toString());
     this.setState({
       date: value
     });
   },
-  notice() {
-    message.info(this.state.date.toString());
-  },
   render() {
-    return <div>
+    return <div style={{width: 400, margin: '100px auto'}}>
       <Datepicker onSelect={this.handleChange} />
-      <button className="ant-btn ant-btn-primary" onClick={this.notice}>显示日期</button>
+      <div style={{marginTop: 20}}>期：{this.state.date.toString()}</div>
     </div>;
   }
 });
 
-React.render(<App />, document.body);
+React.render(<App />, document.querySelector("#abc"));

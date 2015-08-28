@@ -1,21 +1,28 @@
-var path = require('path');
+'use strict';
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+var pkg = require(path.join(process.cwd(), 'package.json'));
 module.exports = {
-  entry: {
-    index: ['./src/index.js']
-  },
   output: {
-    path: './dist',
-    publicPath: '/assets/',
-    filename: "[name].js"
+    path: path.join(process.cwd(), './public/'),
+    filename: '[name].js',
+    chunkFilename: '[name].js'
   },
+
+  devtool: '#source-map',
+
   resolve: {
     root: path.join(__dirname, '../node_modules'),
     extensions: ['', '.js', '.jsx']
   },
+
   resolveLoader: {
     root: path.join(__dirname, '../node_modules')
   },
+
+  entry: pkg.entry,
+
   module: {
     loaders: [{
       test: /\.jsx$/,
@@ -37,12 +44,33 @@ module.exports = {
         'autoprefixer-loader!' +
         'less?sourceMap'
       )
+    }, {
+      test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url?limit=10000&minetype=application/font-woff'
+    }, {
+      test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url?limit=10000&minetype=application/font-woff'
+    }, {
+      test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url?limit=10000&minetype=application/octet-stream'
+    }, {
+      test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'file'
+    }, {
+      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+      loader: 'url?limit=10000&minetype=image/svg+xml'
     }]
   },
   plugins: [
     new ExtractTextPlugin('[name].css', {
       disable: false,
       allChunks: true
-    })
-  ]
-}
+    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.IgnorePlugin(/^xhr2$/)
+  ],
+  externals: {
+    jquery: 'window.jQuery',
+    react: 'window.React'
+  }
+};
