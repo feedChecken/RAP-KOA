@@ -49,6 +49,6 @@ app.listen(config.port || 3000);
 
 //开发环境
 var webpackServer = require('./config/webpackServer');
-if(process.argv[2] == 'dev'){
+if(process.env.NODE_ENV == 'development'){
   webpackServer(app);
 };
