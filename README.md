@@ -15,5 +15,9 @@
 - 后台使用[koa](http://koajs.cn/)
 
 首先执行`npm install`
+
 `npm install --dev`
+
 `npm run dev`运行
+
+*editorconfig* 和 *eslint* 待添加 
