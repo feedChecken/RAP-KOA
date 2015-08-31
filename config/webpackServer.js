@@ -2,9 +2,9 @@ var webpackConfig = require('./webpack.config');
 var webpack = require('webpack');
 var socketio = require('socket.io');
 var serverConfig = require('./serverConfig');
+var printResult = require('./printResult');
 var http = require('http');
-console.log(webpackConfig);
-module.exports = function(server) {
+module.exports = function(server, app) {
   var args = {};
   args.hot = true;
   var io;
@@ -35,8 +35,19 @@ module.exports = function(server) {
   var invalidPlugin = function() {
     if (io) io.sockets.emit("invalid");
   };
+
   compiler.plugin("compile", invalidPlugin);
-  compiler.plugin("invalid", invalidPlugin)
+  compiler.plugin("invalid", invalidPlugin);
+  // app.use(require('./middleware')(compiler));
+  var webpackMiddleware = require('koa-webpack-dev-middleware');
+  app.use(webpackMiddleware(compiler), {
+    publicPath: "/public/"
+  })
+  app.use(require('koa-serve-index')("../public", {
+    hidden: true,
+    view: 'details'
+  }));
+
   if (args.hot) {
     io = socketio.listen(server, {
       "log level": 1
@@ -45,7 +56,7 @@ module.exports = function(server) {
       socket.emit("hot");
       if (!_stats) return;
       _sendStats(socket, _stats.toJson(), true);
-    }.bind(null));
+    }.bind(server));
   }
 }
 
@@ -60,16 +71,4 @@ function _sendStats(socket, stats, force) {
     socket.emit("warnings", stats.warnings);
   else
     socket.emit("ok");
-}
-
-function _getMergeConfig() {
-  try {
-    return require(join(process.cwd(), 'webpack.dev.config.merge.js'));
-  } catch (e) {
-    try {
-      return require(join(process.cwd(), 'webpack.config.merge.js'));
-    } catch (e) {
-      return {};
-    }
-  }
 }

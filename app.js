@@ -27,7 +27,7 @@ var config = require('./config/serverConfig');
 
 //include config
 //generate application
-app.use(logger());
+// app.use(logger());
 //parse static file
 app.use(serve(__dirname + '/public'));
 app.use(router.routes());
@@ -45,10 +45,11 @@ app.use(router.routes());
 
 
 //开发环境
-var webpackServer = require('./config/webpackServer');
 var server = app.listen(config.port, function(){
   console.log('server listened on port :' + config.port);
 });
 if(process.env.NODE_ENV == 'development'){
-  webpackServer(server);
+  // var webpackServer = require('./config/webpackServer');
+  // 这里不知道如何集成webpack，求高手拯救
+  // webpackServer(server, app);
 }

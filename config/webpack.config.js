@@ -20,11 +20,8 @@ module.exports = {
   resolveLoader: {
     root: path.join(__dirname, '../node_modules')
   },
-
   entry: {
-    Index : {
-      path : path.join(__dirname, '../src')
-    }
+      index : path.join(__dirname, '../src')
   },
 
   module: {

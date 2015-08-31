@@ -1,0 +1,50 @@
+#header {
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  height: 55px;
+}
+#logo {
+  height: 120px;
+  float: left;
+}
+#logo img {
+  height: 54px;
+}
+#nav {
+  display: block;
+  float: left;
+}
+#nav .bar {
+  width: 20%;
+  height: 3px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #6EB4E0;
+  display: none;
+  transition: left .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#user {
+  float: right;
+}
+#searchBar {
+  display: block;
+  float: left;
+  margin-top: 15px;
+}
+#searchBar .ant-select-selection--single {
+  border: transparent;
+  outline: none;
+  width: 160px;
+  height: 28px;
+  line-height: 28px;
+  color: #999;
+  transition: padding .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-size: 14px;
+  box-shadow: none;
+}
+#header .ant-menu{
+  border-bottom:none;
+}

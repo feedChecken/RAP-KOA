@@ -1,0 +1,16 @@
+{
+  "entry": {
+    "index": "./index.js"
+  },
+  "dependencies": {
+    "antd": "*",
+    "react": "~0.13.3"
+  },
+  "devDependencies": {
+    "antd-bin": "0.x"
+  },
+  "scripts": {
+    "dev": "antd server",
+    "build": "antd build"
+  }
+}
