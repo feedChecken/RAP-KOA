@@ -42,14 +42,6 @@ app.use(router.routes());
 // app.keys = config.secret;
 //use session
 // app.use(session(app));
-
-
-//开发环境
-var server = app.listen(config.port, function(){
+app.listen(config.port, function(){
   console.log('server listened on port :' + config.port);
 });
-if(process.env.NODE_ENV == 'development'){
-  // var webpackServer = require('./config/webpackServer');
-  // 这里不知道如何集成webpack，求高手拯救
-  // webpackServer(server, app);
-}
