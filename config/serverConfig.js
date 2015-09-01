@@ -7,8 +7,7 @@ module.exports = {
     user: "root",
     password: "root",
     database : "rap_db",
-    protocol: 'mysql',
+    dialect: 'mysql',
     port:     '3306',
-    query:    {pool: true}
   }
 }

@@ -41,6 +41,7 @@
     "antd": "^0.8.0",
     "co-views": "^2.0.0",
     "jade": "^1.11.0",
+    "jquery": "^2.1.4",
     "koa": "^1.0.0",
     "koa-body-parser": "^1.1.2",
     "koa-jade": "^1.1.0",
@@ -48,6 +49,7 @@
     "koa-router": "^5.1.2",
     "koa-session": "^3.3.1",
     "koa-static": "^1.4.9",
+    "mysql": "^2.9.0",
     "object-assign": "^4.0.1",
     "qs": "^5.0.0",
     "sequelize": "^3.6.0"

@@ -7,7 +7,9 @@ var SubMenu = Menu.SubMenu;
 var Select = antd.Select;
 var Option = Select.Option;
 var Dropdown = antd.Dropdown;
-
+import $ from 'jquery';
+let abc = $;
+console.log(abc);
 require('./default.css')
 var App = React.createClass({
   getInitialState() {
@@ -27,6 +29,9 @@ var App = React.createClass({
           <i className="anticon anticon-home"></i>主页
         </Menu.Item>
         <Menu.Item key="app">
+          <i className="anticon anticon-smile"></i>团队
+        </Menu.Item>
+        <Menu.Item key="app">
           <i className="anticon anticon-folder-open"></i>文档
         </Menu.Item>
         <SubMenu title={<span><i className="anticon anticon-user"></i>团队</span>}>
@@ -36,7 +41,7 @@ var App = React.createClass({
           <Menu.Item key="setting:4">选项4</Menu.Item>
         </SubMenu>
         <Menu.Item key="alipay">
-          <a href="###" target="_blank"><i className="anticon anticon-smile"></i>测试</a>
+          <a href="###" target="_blank"><i className="anticon anticon-line-chart"></i>测试</a>
         </Menu.Item>
       </Menu>
   }
