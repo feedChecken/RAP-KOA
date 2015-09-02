@@ -9,7 +9,7 @@ var se = new Sequelize('rap_db',dbOption.user,dbOption.password,{
     min: 0,
     idle: 10000
   }
-})
+});
 var User = se.define('User',{
   id : Sequelize.INTEGER,
   account : Sequelize.STRING,
@@ -25,12 +25,21 @@ var User = se.define('User',{
 },{
   tableName : 'tb_user',
   createdAt: false,
-  updatedAt: 'last_login_date'
+  updatedAt: 'last_login_date',
+  getterMethods : {
+    getName : function(){
+      return this.name;
+    }
+  }
+
 })
-var abc = User.findAll({
+var models = se.models;
+var abc = models.User.findAll({
   where : {
     id : 1
   }
 }).then(function(res){
-  console.log(res);
+  res.forEach(function(val,ind){
+    console.log(val.getName);
+  })
 })

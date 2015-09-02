@@ -4,7 +4,13 @@
   "description": "rap",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "antd server",
+    "build": "antd build"
+  },
+  "entry" : {
+    "index" : "./src/js/index.js",
+    "team" : "./src/js/team.js"
   },
   "keywords": [
     "rap",
@@ -15,7 +21,7 @@
   "author": "hawk",
   "license": "MIT",
   "devDependencies": {
-    "antd": "^0.8.0",
+    "antd-bin": "0.x",
     "babel": "^5.8.23",
     "babel-core": "^5.8.22",
     "del": "^1.2.1",
