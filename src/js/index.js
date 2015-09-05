@@ -10,7 +10,7 @@ var Dropdown = antd.Dropdown;
 import $ from 'jquery';
 let abc = $;
 console.log(abc);
-require('./css/default.css')
+require('../css/default.css')
 var App = React.createClass({
   getInitialState() {
     return {

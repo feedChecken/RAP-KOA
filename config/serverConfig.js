@@ -1,6 +1,7 @@
 module.exports = {
   port : 3000,
-  host : 'localhost',
+  hot : 'localhost',
+  host : true,
   secret : ['beautify girl'],
   dbOption : {
     host: "localhost",

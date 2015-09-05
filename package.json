@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "antd server",
+    "dev": "node newapp.js",
     "build": "antd build"
   },
   "entry" : {
