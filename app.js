@@ -14,9 +14,8 @@ var bodyParser = require('koa-body-parser');
 var session = require('koa-session');
 //引入querystring Parse
 var queryString = require('qs');
-
+var Orm = require('./lib/database');
 var app = koa();
-
 //===============引入自定义模块===============
 //引入路由管理
 var router = require('./router/route');
@@ -29,7 +28,12 @@ var config = require('./config/serverConfig');
 // app.use(logger());
 //parse static file
 app.use(serve(__dirname + '/public'));
+app.use(function*(next){
+  this.models = Orm;
+  yield next;
+})
 app.use(router.routes());
+
 //parse Url query string
 // app.use(function*(next){
   // this.qs = queryString.parse(this.querystring);

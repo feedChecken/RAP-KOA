@@ -69,7 +69,6 @@
 	var Dropdown = _antd2['default'].Dropdown;
 
 	var abc = _jquery2['default'];
-	__webpack_require__(407);
 	var App = _react2['default'].createClass({
 	  displayName: 'App',
 
@@ -97,8 +96,12 @@
 	      _react2['default'].createElement(
 	        Menu.Item,
 	        { key: 'app' },
-	        _react2['default'].createElement('i', { className: 'anticon anticon-smile' }),
-	        '团队'
+	        _react2['default'].createElement(
+	          'a',
+	          { href: '/team' },
+	          _react2['default'].createElement('i', { className: 'anticon anticon-smile' }),
+	          '团队'
+	        )
 	      ),
 	      _react2['default'].createElement(
 	        Menu.Item,
@@ -64029,46 +64032,6 @@
 	return jQuery;
 
 	}));
-
-
-/***/ },
-/* 407 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(408);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(161)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./default.css", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./default.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 408 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(160)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "#header {\n  width: 100%;\n  background: #fff;\n  border-bottom: 1px solid #eee;\n  font-size: 16px;\n  height: 55px;\n}\n#logo {\n  height: 120px;\n  float: left;\n}\n#logo img {\n  height: 54px;\n}\n#nav {\n  display: block;\n  float: left;\n}\n#nav .bar {\n  width: 20%;\n  height: 3px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  background: #6EB4E0;\n  display: none;\n  transition: left .3s cubic-bezier(0.075, 0.82, 0.165, 1);\n}\n#user {\n  float: right;\n}\n#searchBar {\n  display: block;\n  float: left;\n  margin-top: 15px;\n}\n#searchBar .ant-select-selection--single {\n  border: transparent;\n  outline: none;\n  width: 160px;\n  height: 28px;\n  line-height: 28px;\n  color: #999;\n  transition: padding .3s cubic-bezier(0.075, 0.82, 0.165, 1);\n  font-size: 14px;\n  box-shadow: none;\n}\n.padding20 .col-8{\n  padding: 0 20px;\n\n}\n#header .ant-menu{\n  border-bottom:none;\n}\n.indexRow{\n  text-align:center;\n  font-size:14px;\n  line-height: 2;\n  margin:20px 0 ;\n}\nh1{\n  font-size:40px;\n  text-align:center;\n}\nh4{\n  font-size:30px;\n}\n", ""]);
-
-	// exports
 
 
 /***/ }

@@ -6,7 +6,6 @@ var render = views(__dirname + '/../views', {
 var api = require('./api');
 
 router.get('/', function*(next) {
-  console.log(this);
   this.body = yield render('./home');
 });
 
@@ -15,14 +14,7 @@ router.get('/:path', function*(next){
 });
 
 router.get('/api/:api', function*(next){
-  this.body = yield api(this);
+  this.body = yield api(this,this.params.api);
 });
-
-
-
-
-
-
-
 
 module.exports = router;

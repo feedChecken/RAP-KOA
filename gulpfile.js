@@ -11,8 +11,8 @@ var react = require('gulp-react');
 var less = require('gulp-less');
 var del = require('del');
 var babel = require('gulp-babel');
-var browserify = require('gulp-browserify');
 var webpack = require('gulp-webpack');
+var gulpFilter = require('gulp-filter');
 //引入插件
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
   LessPluginAutoPrefix = require('less-plugin-autoprefix'),
@@ -42,20 +42,20 @@ gulp.task('cleancss', function(cb) {
   del(['public/css'], cb);
 });
 //配置react任务
-gulp.task('react', function() {
-  var combined = combiner.obj([
-    gulp.src(paths.react).pipe(babel()).pipe(browserify({
-      insertGlobals: true,
-      extensions: ['.jsx']
-    })),
-    sourcemaps.init(),
-    react(),
-    sourcemaps.write('.'),
-    gulp.dest('public/react')
-  ]);
-  combined.on('error', console.error.bind(console));
-  return combined;
-});
+// gulp.task('react', function() {
+//   var combined = combiner.obj([
+//     gulp.src(paths.react).pipe(babel()).pipe(browserify({
+//       insertGlobals: true,
+//       extensions: ['.jsx']
+//     })),
+//     sourcemaps.init(),
+//     react(),
+//     sourcemaps.write('.'),
+//     gulp.dest('public/react')
+//   ]);
+//   combined.on('error', console.error.bind(console));
+//   return combined;
+// });
 
 //配置webpack任务
 gulp.task('webpack', function() {
@@ -67,8 +67,10 @@ gulp.task('webpack', function() {
 
 //配置less任务
 gulp.task('less', function() {
+  var filter = gulpFilter(['*','!**/pub.less'],{restore: true});
   var combined = combiner.obj([
     gulp.src(paths.less),
+    filter,
     less({
       plugins: [autoprefix, cleancss]
     }),
@@ -103,9 +105,9 @@ gulp.task('scripts', function() {
 gulp.task('watch', function() {
   livereload.listen();
   gulp.watch(paths.less, ['less']);
-  gulp.watch(paths.react, ['react']);
+  // gulp.watch(paths.react, ['react']);
   // gulp.watch(paths.jade, ['livereload']);
 });
 
 //配置默认任务
-gulp.task('default', ['less', 'watch']);
+gulp.task('default', ['less', 'watch','webpack']);

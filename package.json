@@ -29,6 +29,7 @@
     "gulp-babel": "^5.2.1",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
+    "gulp-filter": "^3.0.1",
     "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.0",
     "gulp-react": "^3.0.1",

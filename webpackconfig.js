@@ -1,6 +1,6 @@
 module.exports = {
   entry : {
-    home : './src/jsx/index.jsx',
+    header : './src/jsx/header.jsx',
     test : './src/jsx/test.jsx'
   },
   output: {
