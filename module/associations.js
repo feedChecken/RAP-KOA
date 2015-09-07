@@ -6,18 +6,12 @@ module.exports = function(models) {
   var User = models.User;
   var Project = models.Project;
   var Pau = models.Pau;
-  User.belongsToMany(Project,{as : 'Tasks', through : Pau, foreignKey : 'user_id'})
-  Project.belongsToMany(User, {as : 'Worker', through : Pau, foreignKey : 'project_id'})
-  User.findAll({
-  include: [{
-    model: Pau
-  }],
-  where: {
-    id: 1
-  }
-}).then(function(res) {
-  console.log(res);
-  // console.log(res);
-  // yield res;
-})
+  User.belongsToMany(Project, {
+    through: Pau,
+    foreignKey: 'user_id'
+  });
+  Project.belongsToMany(User, {
+    through: Pau,
+    foreignKey: 'project_id'
+  });
 }

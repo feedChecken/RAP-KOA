@@ -22,10 +22,18 @@ var Project = {
 var option = {
   tableName: 'tb_project',
   createdAt: false,
+  underscored: true,
   updatedAt: 'update_time',
   getterMethods: {
     getName: function() {
       return this.name;
+    },
+    intro : function(){
+      return {
+        name : this.name,
+        intro : this.introduction,
+        update: this.update_time
+      }
     }
   }
 };

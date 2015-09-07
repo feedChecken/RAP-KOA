@@ -19,11 +19,17 @@ var user = {
 };
 var option = {
   tableName: 'tb_user',
+  underscored: true,
   createdAt: false,
   updatedAt: 'last_login_date',
   getterMethods: {
-    getName: function() {
-      return this.name;
+    normal: function() {
+      return {
+        name : this.name,
+        account : this.account,
+        email : this.email,
+        id : this.id
+      };
     }
   }
 };
