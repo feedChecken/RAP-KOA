@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node newapp.js",
+    "dev": "antd server",
     "build": "antd build"
   },
-  "entry" : {
-    "index" : "./src/js/index.js",
-    "team" : "./src/js/team.js"
+  "entry": {
+    "index": "./src/js/index.js",
+    "team": "./src/js/team.js"
   },
   "keywords": [
     "rap",
@@ -46,6 +46,7 @@
   "dependencies": {
     "antd": "^0.8.0",
     "co-views": "^2.0.0",
+    "gulp-webpack": "^1.5.0",
     "jade": "^1.11.0",
     "jquery": "^2.1.4",
     "koa": "^1.0.0",

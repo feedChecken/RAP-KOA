@@ -12,6 +12,7 @@ var less = require('gulp-less');
 var del = require('del');
 var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
+var webpack = require('gulp-webpack');
 //引入插件
 var LessPluginCleanCSS = require('less-plugin-clean-css'),
   LessPluginAutoPrefix = require('less-plugin-autoprefix'),
@@ -31,6 +32,7 @@ var paths = {
   react: ['src/jsx/**/*.jsx'],
 };
 
+
 //配置清理任务
 gulp.task('clean', function(cb) {
   // del(['build'], cb);
@@ -43,7 +45,8 @@ gulp.task('cleancss', function(cb) {
 gulp.task('react', function() {
   var combined = combiner.obj([
     gulp.src(paths.react).pipe(babel()).pipe(browserify({
-      insertGlobals: true      extensions: ['.jsx']
+      insertGlobals: true,
+      extensions: ['.jsx']
     })),
     sourcemaps.init(),
     react(),
@@ -53,6 +56,14 @@ gulp.task('react', function() {
   combined.on('error', console.error.bind(console));
   return combined;
 });
+
+//配置webpack任务
+gulp.task('webpack', function() {
+  var combined = combiner.obj([
+    gulp.src('src/jsx/index.jsx'), webpack(require('./webpackconfig')),
+    gulp.dest('./public')
+  ])
+})
 
 //配置less任务
 gulp.task('less', function() {

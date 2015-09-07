@@ -20,3 +20,4 @@ var App = React.createClass({
   }
 });
 React.render(<App />, document.querySelector("#abc"));
+console.log(123);
