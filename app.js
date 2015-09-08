@@ -29,7 +29,8 @@ var config = require('./config/serverConfig');
 //parse static file
 app.use(serve(__dirname + '/public'));
 app.use(function*(next){
-  this.models = Orm;
+  this.orm = Orm;
+  this.models = Orm.models;
   yield next;
 })
 app.use(router.routes());

@@ -32,7 +32,8 @@ var option = {
       return {
         name : this.name,
         intro : this.introduction,
-        update: this.update_time
+        update: this.update_time,
+        owner_id : this.user_id
       }
     }
   }

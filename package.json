@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "antd server",
-    "build": "antd build"
+    "dev": "supervisor app.js"
   },
   "entry": {
     "index": "./src/js/index.js",
