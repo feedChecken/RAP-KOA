@@ -22,28 +22,28 @@ var App = React.createClass({
     });
   },
   render() {
-    return <Menu mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]}>
+    return (<Menu mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]}>
         <Menu.Item key="mail">
-          <i className="anticon anticon-home"></i>主页
+          主页
         </Menu.Item>
         <Menu.Item key="app">
           <a href="/team">
-            <i className="anticon anticon-smile"></i>团队
+          团队
           </a>
         </Menu.Item>
         <Menu.Item key="doc">
-          <i className="anticon anticon-folder-open"></i>文档
+          文档
         </Menu.Item>
-        <SubMenu title={<span><i className="anticon anticon-user"></i>团队</span>}>
+        <SubMenu title={<span>团队</span>}>
           <Menu.Item key="setting:1">测试团队</Menu.Item>
           <Menu.Item key="setting:2">选项2</Menu.Item>
           <Menu.Item key="setting:3">选项3</Menu.Item>
           <Menu.Item key="setting:4">选项4</Menu.Item>
         </SubMenu>
         <Menu.Item key="alipay">
-          <a href="###" target="_blank"><i className="anticon anticon-line-chart"></i>测试</a>
+          <a href="###" target="_blank">测试</a>
         </Menu.Item>
-      </Menu>
+      </Menu>);
   }
 });
 
@@ -89,9 +89,9 @@ var User = React.createClass({
           注册
         </Menu.Item>
       </Menu>
-    )
+    );
   }
-})
+});
 React.render(<App/>, document.getElementById('nav'));
 React.render(<Search/>, document.getElementById('searchBar'));
 React.render(<User/>, document.getElementById('user'));

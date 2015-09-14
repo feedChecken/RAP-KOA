@@ -1,25 +1,35 @@
 var getData = {
   getUserProject: function(app) {
     // this.body = this.models
-    return new Promise(function(resolve, reject){
-      app.models.Project.findAll({
-        where : {
-          user_id : 1
-        }
-      }).then(function(res){
+    return new Promise(function(resolve, reject) {
+      app.orm.query('SELECT a.id,a.name,a.update_time as \'update\',a.introduction as intro,b.name as owner FROM tb_project as a INNER JOIN tb_user as b ON a.user_id=b.id WHERE b.id=1;').spread(function(res, metadata) {
+        resolve(res);
+      });
+    });
+
+  },
+  getUserJoinProject: function(app) {
+    return new Promise(function(resolve, reject) {
+      app.models.User.findOne({
+        where: {
+          id: 1
+        },
+        include: [
+          app.models.Project
+        ]
+      }).then(function(res) {
         var ret = [];
-        res.forEach(function(val){
+        res.Projects.forEach(function(val) {
+          try{
+            var data = JSON.parse(val.project_data);
+            val.owner = data.user;
+          }catch(e){
+            console.log(e);
+          }
           ret.push(val.intro);
         });
         resolve(ret);
       });
-    });
-  },
-  getUserJoinProject : function(app){
-    return new Promise(function(resolve, reject){
-       app.orm.query('SELECT a.name as owner,b.id,b.name,b.update_time as \'update\',b.introduction as intro FROM tb_user as a INNER JOIN tb_project as b where a.id =1').spread(function(res,metadata){
-         resolve(res);
-       });
     });
   }
 };

@@ -90,7 +90,6 @@
 	      _react2['default'].createElement(
 	        Menu.Item,
 	        { key: 'mail' },
-	        _react2['default'].createElement('i', { className: 'anticon anticon-home' }),
 	        '主页'
 	      ),
 	      _react2['default'].createElement(
@@ -99,14 +98,12 @@
 	        _react2['default'].createElement(
 	          'a',
 	          { href: '/team' },
-	          _react2['default'].createElement('i', { className: 'anticon anticon-smile' }),
 	          '团队'
 	        )
 	      ),
 	      _react2['default'].createElement(
 	        Menu.Item,
 	        { key: 'doc' },
-	        _react2['default'].createElement('i', { className: 'anticon anticon-folder-open' }),
 	        '文档'
 	      ),
 	      _react2['default'].createElement(
@@ -114,7 +111,6 @@
 	        { title: _react2['default'].createElement(
 	            'span',
 	            null,
-	            _react2['default'].createElement('i', { className: 'anticon anticon-user' }),
 	            '团队'
 	          ) },
 	        _react2['default'].createElement(
@@ -144,7 +140,6 @@
 	        _react2['default'].createElement(
 	          'a',
 	          { href: '###', target: '_blank' },
-	          _react2['default'].createElement('i', { className: 'anticon anticon-line-chart' }),
 	          '测试'
 	        )
 	      )

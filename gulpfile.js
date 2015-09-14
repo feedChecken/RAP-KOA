@@ -62,8 +62,8 @@ gulp.task('webpack', function() {
   var combined = combiner.obj([
     gulp.src('src/jsx/index.jsx'), webpack(require('./webpackconfig')),
     gulp.dest('./public')
-  ])
-})
+  ]);
+});
 
 //配置less任务
 gulp.task('less', function() {

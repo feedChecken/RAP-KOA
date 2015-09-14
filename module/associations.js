@@ -10,9 +10,9 @@ module.exports = function(models) {
     through: Pau,
     foreignKey: 'user_id'
   });
-  Project.belongsTo(User,{foreignKey : 'user_id'});
-  // Project.belongsToMany(User, {
-  //   through: Pau,
-  //   foreignKey: 'project_id'
-  // });
-}
+  // Project.belongsTo(User,{foreignKey : 'user_id'});
+  Project.belongsToMany(User, {
+    through: Pau,
+    foreignKey: 'project_id'
+  });
+};

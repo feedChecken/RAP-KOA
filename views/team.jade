@@ -1,10 +1,18 @@
 extends ./layout
 block header
   title 首页
+  script(src="/js/team.js")
   include ./modules/head
 block content
   include ./modules/header
   .pw.indexRow
     .row
       h1.title 我的主页  
-  div#abc 我是内容
+      .h4
+        .anticon.anticon-user
+        | 我的项目
+      #userProject.clearfix
+      .h4
+        .anticon.anticon-tags
+        |我参与的项目
+      #userJoinProject.clearfix
