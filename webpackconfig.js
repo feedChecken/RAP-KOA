@@ -1,7 +1,7 @@
 module.exports = {
   entry : {
     header : './src/jsx/header.jsx',
-    test : './src/jsx/test.jsx'
+    test : './src/jsx/team.jsx'
   },
   output: {
     filename: './js/[name].js',
@@ -21,4 +21,4 @@ module.exports = {
       loader: 'style!css'
     }]
   },
-}
+};

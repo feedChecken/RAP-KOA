@@ -44,9 +44,10 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	"use strict";
+	// 吃一见长一智
+	'use strict';
 
-	console.log(456);
+	console.log('我不服！！');
 
 /***/ }
 /******/ ]);
