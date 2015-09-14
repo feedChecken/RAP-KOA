@@ -1,3 +1,4 @@
+/* global __dirname */
 /* global process */
 process.env.NODE_ENV = 'development';
 //================引入主模块=================
@@ -29,7 +30,7 @@ var config = require('./config/serverConfig');
 // app.use(logger());
 //parse static file
 app.use(serve(__dirname + '/public'));
-app.use(function*(next){
+app.use(function* (next) {
   this.orm = Orm;
   this.models = Orm.models;
   yield next;
@@ -38,8 +39,8 @@ app.use(router.routes());
 
 //parse Url query string
 // app.use(function*(next){
-  // this.qs = queryString.parse(this.querystring);
-  // yield next;
+// this.qs = queryString.parse(this.querystring);
+// yield next;
 // });
 //parse request
 // app.use(bodyParser());
@@ -47,6 +48,6 @@ app.use(router.routes());
 // app.keys = config.secret;
 //use session
 // app.use(session(app));
-app.listen(config.port, function(){
+app.listen(config.port, function () {
   console.log('server listened on port :' + config.port);
 });
