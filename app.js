@@ -1,3 +1,4 @@
+/* global process */
 process.env.NODE_ENV = 'development';
 //================引入主模块=================
 var koa = require('koa');
