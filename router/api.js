@@ -31,6 +31,17 @@ var getData = {
         resolve(ret);
       });
     });
+  },
+  getProject : function(app){
+    return new Promise(function(resolve, reject){
+       app.models.Project.findOne({
+         where : {
+           id : 2
+         }
+       }).then(function(res){
+         resolve(res);
+       });
+    });
   }
 };
 module.exports = function*(app, apiname) {

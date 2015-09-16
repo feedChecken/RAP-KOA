@@ -11,7 +11,14 @@ let ProjectList = R.createClass({render() {
               <div className="projectTitle">{val.name}</div>
               <div className="projectIntro">{val.intro}</div>
               <div className="projectUpdate">{moment(val.update).fromNow()}</div>
-              <div className="projectTools">toolbar</div>
+              <div className="projectTools">
+                <i className="anticon anticon-edit"></i>
+                <i className="anticon anticon-link"></i>
+                <a href="/project">
+                  <i className="anticon anticon-line-chart"></i>
+                </a>
+                <i className="anticon anticon-delete"></i>
+              </div>
             </li>
           );
         })}

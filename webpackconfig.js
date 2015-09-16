@@ -1,7 +1,8 @@
 module.exports = {
   entry : {
     header : './src/jsx/header.jsx',
-    team : './src/jsx/team.jsx'
+    team : './src/jsx/team.jsx',
+    project : './src/jsx/project.jsx'
   },
   output: {
     filename: './js/[name].js',
