@@ -45,11 +45,13 @@
     "stream-combiner2": "^1.0.2"
   },
   "dependencies": {
+    "JSONStream": "^1.0.4",
     "antd": "^0.8.0",
     "co-views": "^2.0.0",
     "gulp-webpack": "^1.5.0",
     "jade": "^1.11.0",
     "jquery": "^2.1.4",
+    "json-parse-safe": "^1.0.3",
     "koa": "^1.0.0",
     "koa-body-parser": "^1.1.2",
     "koa-jade": "^1.1.0",

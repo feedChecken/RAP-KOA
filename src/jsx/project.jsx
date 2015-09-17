@@ -3,6 +3,7 @@ import $ from 'jquery';
 import React from 'react';
 var Select = antd.Select;
 var Option = Select.Option;
+var Menu = antd.Menu;
 
 function handleChange(value) {
   console.log('selected ' + value);
@@ -50,11 +51,47 @@ let Topbar = React.createClass({getInitialState() {
   }
 });
 
+let ProjectDetail = React.createClass({
+  getInitialState (){
+    return {
+      current : 1,
+      moduleList : this.props.moduleList
+    };
+  },
+  handleClick(e){
+    this.setState({
+      current : e.key.replace('module','')
+    });
+  },
+  render (){
+    return (
+      <div>
+        <Menu mode="horizontal" onClick={this.handleClick} selectedKeys={[this.state.current]}>
+          {this.props.moduleList.map(function(val,ind){
+              return (
+                <Menu.Item key={"module" + ind} >
+                  {val.name}
+                </Menu.Item>
+                );
+          })}
+        </Menu>
+        <div>{this.state.moduleList[this.state.current]}</div>
+      </div>
+    );
+  }
+});
+
+
 function initProject(id) {
   $.ajax({
     url: '/api/getProject',
     success: function(data) {
-      let da = JSON.parse(data.project_data);
+      console.log(123);
+      var da;
+      if(data.project_data[0] === "{"){
+        da = eval("(" + data.project_data + ")");
+      }
+      React.render(React.createElement(ProjectDetail,da),document.getElementById('projectDetail'));
       console.log(da);
     }
   });

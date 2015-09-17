@@ -8,13 +8,13 @@ var api = require('./api');
 router.get('/', function*(next) {
   this.body = yield render('./home');
 });
-
 router.get('/team', function*(next){
   this.body = yield render('./team');
 });
 router.get('/project', function*(next){
   this.body = yield render('./project');
 });
+
 // router.get('/:path', function*(next){
 //   this.body = yield render('./'+this.params.path);
 // });
