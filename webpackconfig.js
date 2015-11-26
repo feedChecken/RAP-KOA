@@ -9,7 +9,14 @@ module.exports = {
     chunkFilename: './js/[name].js'
   },
   watch: true,
+  devtool : 'source-map',
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: "source-map-loader"
+      }
+    ],
     loaders: [{
       test: /\.jsx$/,
       loaders: ['babel']
@@ -17,9 +24,9 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel'
-    }, {
-      test: /\.css$/,
-      loader: 'style!css'
+    },{
+      test : /\.less$/,
+      loader : "style!css!less"
     }]
   },
 };
